@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
-    "@island.is/ui": "0.0.0-alpha.2",
+    "@island.is/ui": "0.0.0-alpha.4",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@rehooks/component-size": "1.0.3",
     "@svgr/webpack": "5.5.0",
@@ -84,7 +84,7 @@
     "terser-webpack-plugin": "4.2.3",
     "treat": "1.6.0",
     "ts-pnp": "1.2.0",
-    "typescript": "^4.1.2",
+    "typescript": "4.1.2",
     "url-loader": "4.1.1",
     "web-vitals": "^1.0.1",
     "webpack": "4.44.2",

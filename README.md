@@ -1,46 +1,102 @@
-# Getting Started with Create React App
+## ⚠️ Disclaimer! The @island.is/ui library is not officially release and is only available as an alpha version at the moment. We are going to improve it and provide a better support in the future. Proceed with cautious, things might break.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setup
 
-## Available Scripts
+1. Create a new react app
 
-In the project directory, you can run:
+```bash
+npx create-react-app my-app --template typescript
+```
 
-### `yarn start`
+2. Eject CRA
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+yarn eject
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. Install `@island.is/ui`
 
-### `yarn test`
+```bash
+yarn add @island.is/ui -E
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install its required peerDependencies
 
-### `yarn build`
+```bash
+yarn add @rehooks/component-size animejs classnames date-fns downshift hypher lodash markdown-to-jsx react react-animate-height react-datepicker react-dropzone react-keyed-flatten-children react-select react-toastify react-use reakit treat@1.6.0 -E
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Make sure to install `treat@1.6.0`. It won't work with treat@2.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Configure `tsconfig.json`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Update the following options to the `tsconfig.json` file.
 
-### `yarn eject`
+```diff
+{
+  "compilerOptions": {
+    ...
+-   "strict": true,
++   "strict": false,
+    "jsx": "react-jsx",
++   "downlevelIteration": true
+  },
+  "include": [
+    "src"
+  ],
++ "exclude": [
++   "node_modules/@island.is"
++ ]
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5. Configure `paths.js` and `webpack.config.js`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+We also need to configure babel so it will transpile our `@island.is/ui` library. We need to define first a new path for the library and then whitelist it to the babel module.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`config/paths.js`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```diff
+  appNodeModules: resolveApp('node_modules'),
++ appIslandIsUi: resolveApp('node_modules/@island.is'),
+  swSrc: resolveModule(resolveApp, 'src/service-worker'),
+```
 
-## Learn More
+`config/webpack.config.js`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Add the new path created above to the babel module:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+```diff
+{
+  test: /\.(js|mjs|jsx|ts|tsx)$/,
+- include: paths.appSrc,
++ include: [paths.appSrc, paths.appIslandIsUi],
+  loader: require.resolve('babel-loader'),
+}
+```
+
+Then, we need to import and use the Treat plugin to handle `treat` files.
+
+```diff
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
++ const TreatPlugin = require('treat/webpack-plugin');
+```
+
+```diff
+plugins: [
++  new TreatPlugin(),
+  // Generates an `index.html` file with the <script> injected.
+```
+
+6. Run the development server
+
+```bash
+yarn start
+```
+
+It will automatically open `http://localhost:3000`
+
+7. Voilà!
+
+![preview](https://user-images.githubusercontent.com/937328/112627694-d7304400-8e29-11eb-8cac-1f5a6aab7cac.jpg)
