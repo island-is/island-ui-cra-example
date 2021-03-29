@@ -1,4 +1,5 @@
 import { Box, Text } from '@island.is/ui';
+
 import { frames } from './components/PaymentFlow/PaymentFlow';
 
 function App() {
