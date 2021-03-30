@@ -1,5 +1,5 @@
 import { style } from 'treat'
-import { theme } from '@island.is/ui'
+import { theme } from '@island.is/ui/treat'
 
 export const root = style({
   borderRadius: '50%',

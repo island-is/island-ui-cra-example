@@ -1,5 +1,5 @@
 import { style } from 'treat'
-import { theme, themeUtils } from '@island.is/ui'
+import { theme, themeUtils } from '@island.is/ui/treat'
 
 const radioButtonSize = 24
 const radioButtonCheckSize = 12

@@ -1318,10 +1318,10 @@
     gud "^1.0.0"
     warning "^4.0.3"
 
-"@island.is/ui@0.0.0-alpha.4":
-  version "0.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@island.is/ui/-/ui-0.0.0-alpha.4.tgz#aad0e37f3fa9d09576c0e629a48c5d84beb866e9"
-  integrity sha512-coPQOannXZ8TD5huLk2zuxWOYZqP8wRpJKEX8WmiepXwrQBQi33jZS7qoWbTtM2zydq85MDpUOIh7tLiY50iRw==
+"@island.is/ui@0.0.0-alpha.5":
+  version "0.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@island.is/ui/-/ui-0.0.0-alpha.5.tgz#a3b85cf6bad98da5679c1d607b0ab31f86d28370"
+  integrity sha512-DNNTix3AxMaMSTX8WxQRif/WMKI4H861exHGWl6YxVrpUsd2OZWrCu9HnCEzD+0KtrapZwUqkcW5fzYp6oJXdg==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
